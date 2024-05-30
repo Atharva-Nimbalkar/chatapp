@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 /src/sass/
-/src/store/
-/src/components/Login.jsx
+/src/store/actions/

@@ -7,6 +7,9 @@ import {userRegister}  from "../store/actions/authAction";
 
 export const Register = () => {
 
+/* The `dispatch` function is used to dispatch actions to the Redux store. In this case, it is being used to dispatch the `userRegister` action
+from the `authAction` file in the store. This action is responsible for registering a new user with
+the provided information. */
   const dispatch=useDispatch();
   const [loadImage,setLoadImage]=useState('');
   const [state,setState]=useState({
@@ -24,9 +27,14 @@ export const Register = () => {
         })
   }
 
+  /* The `fileHandle` function is a handler for the file input field in the registration form. When a
+  user selects a file (an image in this case), this function is triggered.  */
   const  fileHandle=(e)=>{
     if(e.target.files.length !==0){
       setState({
+       /* The spread operator `...state` in the `inputHandle` function is used to create a new object
+       by copying the existing properties of the `state` object and then updating the specific
+       property that is being changed. */
         ...state,
         [e.target.name]: e.target.files[0]
       })
@@ -43,8 +51,12 @@ export const Register = () => {
   const register=(e)=>{
     
     const {userName,email,password,confirmPassword,image}=state;  
+/* The line `e.preventDefault();` in the `register` function is preventing the default behavior of the
+form submission when the user clicks the submit button. */
     e.preventDefault();
 
+    /* `const formData=new FormData();` is creating a new instance of the `FormData` object in JavaScript. which can then be sent using the `fetch()` method or in this case,
+    it is being used to append form data for user registration before dispatching it to the Redux store. */
     const formData=new FormData();
     formData.append('username',userName);
     formData.append('email',email);
@@ -52,6 +64,9 @@ export const Register = () => {
     formData.append('confirmPassword',confirmPassword);
     formData.append('image',image);
 
+/* The line `dispatch(userRegister(formData))` is dispatching the `userRegister` action with the` formData` object as a parameter. This action is responsible for registering a new user with the
+information provided in the form fields. The `formData` object contains the user's username, email, password, etc that are needed for user registration. By dispatching this action, the user registration process is initiated and the user data is sent to the Redux store
+for handling the registration logic. */
     dispatch(userRegister(formData))
 
 
