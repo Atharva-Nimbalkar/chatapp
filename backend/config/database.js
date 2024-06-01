@@ -1,5 +1,8 @@
 const mongoose=require('mongoose');
 
+/**
+ * The above function `databaseConnect` connects to a MongoDB database using the `mongoose` library.
+ */
 const databaseConnect=()=>{
     mongoose.connect(process.env.DATABASE_URL,{
     useNewUrlParser: true,
@@ -10,5 +13,6 @@ const databaseConnect=()=>{
     console.log(error);
 })
 }
-// DATABASE_URL=mongodb+srv://gbrain2753:Atharva9684@cluster0.jneej3l.mongodb.net/
+/* `module.exports=databaseConnect;` is exporting the `databaseConnect` function so that it can be used
+in other files. This allows other files to import and use the `databaseConnect` function. */
 module.exports=databaseConnect;
