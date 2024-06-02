@@ -10,5 +10,4 @@ const databaseConnect=()=>{
     console.log(error);
 })
 }
-// DATABASE_URL=mongodb+srv://gbrain2753:Atharva9684@cluster0.jneej3l.mongodb.net/
 module.exports=databaseConnect;
